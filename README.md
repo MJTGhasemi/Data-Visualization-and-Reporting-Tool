@@ -30,11 +30,24 @@ Senior Data Scientist | [GitHub](https://github.com/MJTGhasemi) | [LinkedIn](htt
 
 ---
 
+
+## 🧠 Assignments
+
+Below are the assignments for the course. Each includes instructions and any supporting datasets:
+
+| Assignment | Title                                   | Files                                                                 |
+|------------|-----------------------------------------|-----------------------------------------------------------------------|
+| 01         | Descriptive Statistics                  | [Instructions](Assignments/Assignment_01/01_Descriptive_Statistics.docx), [Dataset](Assignments/Assignment_01/CardioGoodFitness.xlsx) |
+| 02         | Standard Deviation                      | [Instructions](Assignments/Assignment_02/02_SD.docx)                  |
+| 03         | GDP Analysis                            | [Instructions](Assignments/Assignment_03/03_GDP.docx), [Dataset](Assignments/Assignment_03/GDP_2025.xlsx) |
+
+
 ## 📂 Folder Overview
 
-- [`slides/`](./Sessions/) – All lecture slides in PPTX format  
-- [`data/`](./Sessions/Session_02/Dataset) – Datasets used for in-class exercises and analysis for each session
-- [`assignments/`](./Assignments/) – Homework & project instructions  
+- `slides/` – All lecture slides in PPTX format  
+- `data/` – Datasets used for in-class exercises and analysis for each session  
+- `assignments/` – Homework & project instructions  
+
 
 ---
 
