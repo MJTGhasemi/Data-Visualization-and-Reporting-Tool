@@ -1,0 +1,48 @@
+USE AdventureWorks2017
+ 
+ 
+SELECT 
+    P.FirstName AS[First Name],  
+    P.MiddleName AS[Middle Name],
+    P.LastName AS[Last Name],
+    E.BirthDate AS[Birth Date], 
+    E.Gender,
+    E.MaritalStatus AS[Marital Status],
+    A.City,
+    SP.Name AS [State/Province],
+    CR.Name AS [Country],
+    E.JobTitle, 
+    D.Name AS [Department],
+    D.GroupName AS[Sub Department],
+    E.HireDate AS[Hire Date],
+    EPH.Rate AS[Salary Rate],
+    E.VacationHours AS[Vacation Hours]
+FROM HumanResources.Employee AS E
+INNER JOIN HumanResources.EmployeePayHistory AS EPH
+    ON E.BusinessEntityID =EPH.BusinessEntityID
+-- We want the latest pay history record
+AND EPH.RateChangeDate = (
+    SELECT MAX(RateChangeDate)
+    FROM HumanResources.EmployeePayHistory
+    WHERE BusinessEntityID =E.BusinessEntityID
+)
+INNER JOIN HumanResources.EmployeeDepartmentHistory AS EDH
+    ON E.BusinessEntityID =EDH.BusinessEntityID
+ 
+INNER JOIN HumanResources.Department AS D
+    ON EDH.DepartmentID =D.DepartmentID
+INNER JOIN Person.Person AS P
+    ON E.BusinessEntityID =P.BusinessEntityID
+INNER JOIN Person.BusinessEntityAddress AS BEA
+    ON E.BusinessEntityID =BEA.BusinessEntityID
+INNER JOIN Person.Address AS A
+    ON BEA.AddressID =A.AddressID
+INNER JOIN Person.StateProvince AS SP
+    ON A.StateProvinceID =SP.StateProvinceID
+INNER JOIN Person.CountryRegion AS CR
+    ON SP.CountryRegionCode =CR.CountryRegionCode
+ 
+-- We want the latest department record
+Where  EDH.EndDate IS NULL
+ 
+ORDER BY [Salary Rate] DESC
